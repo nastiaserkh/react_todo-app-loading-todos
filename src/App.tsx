@@ -31,6 +31,9 @@ export const App: React.FC = () => {
   );
 
   const activeTodosCount = todos.filter(todo => !todo.completed).length;
+  const clearCompleted = () => {
+    setTodos(prevTodos => prevTodos.filter(todo => !todo.completed));
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -136,7 +139,7 @@ export const App: React.FC = () => {
                 type="button"
                 className="todoapp__clear-completed"
                 data-cy="ClearCompletedButton"
-                onClick={() => setTodos([])}
+                onClick={clearCompleted}
               >
                 Clear completed
               </button>
